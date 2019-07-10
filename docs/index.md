@@ -1,2 +1,2 @@
 # Home
-Documentation for the [saladbot API](https://saladbot.glitch.me/api)
+Documentation for the [saladbot API](https://api.salad242.gq)
