@@ -32,3 +32,4 @@ markdown_extensions:
   - pymdownx.tilde
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'https://cdn.jsdelivr.net/gh/Kore-Development/saladbot-api@master/docs/javascripts/https.js'
