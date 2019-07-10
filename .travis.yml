@@ -6,8 +6,7 @@ install:
 script: true
 before_script:
   - "yarn global add firebase-tools"
-before_deploy:
-  - mkdocs build --verbose --clean --strict
+  - "mkdocs build --verbose --clean --strict"
 after_success:
   - "firebase deploy --token=${FIREBASE_API_TOKEN}"
 site_dir: 'public'
