@@ -7,6 +7,6 @@ script: true
 before_script:
   - "yarn global add firebase-tools"
   - "mkdocs build --verbose --clean --strict"
+  - "mv ./site ./public"
 after_success:
   - "firebase deploy --token=${FIREBASE_API_TOKEN}"
-site_dir: 'public'
