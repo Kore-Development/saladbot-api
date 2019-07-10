@@ -4,14 +4,10 @@ branches: master
 install:
 - pip install mkdocs mkdocs-material pygments pymdown-extensions
 script: true
+before_script:
+  - "yarn global add firebase-tools"
 before_deploy:
-- mkdocs build --verbose --clean --strict
-deploy:
-  provider: firebase
-  skip_cleanup: true
-  token:
-    secure: "tMG8zwI9DTCzgzzUbcY72MfHMJz6rrZngJtJRZvruW37/N8fh7mGgaJIKgXeROxFGiUTCaOdiZ+4SSRyTVzxuuPB2N2aF3WcyR8M90BmroBCA5WsvFnzNnvfF84kRuaRSAzr0W2d89gEkYG52zx/QRRE/W8+7xoypyTX9OS2gPnUGJi6PBWIl9FXMjhF39taSt2ZoaNQnINTe8Lf1tmrOoi5tVIUYj3ZzFJq+CLozI1jttGlLs+VaP61hKr7VF6bkcRx1udlLThXG58hZqaaLOmZ66klvd2Vckkox2uG9LiONVrnTMOhVZn1aYD5qJkAf4VhPDEWkU4sgaFNP90sZEciFTg3YQzRYoyFPk3TvAfxrLmBgEKZSmmMNaaaOuih7kNCT8/7vermm4m9oWgPRu9u7JHhYobbhrKmCFHxwBrHc7jJQjsy+EqTkWS6dg6Phy3NJlVOprmwb7NKP6l2wszbRmOhuaEgrqLlPYQrNd2rUJ+hkXGNFuzBshbmDZMYiwU3J8ecDDLED4zhqK5fOiFExXljFNCb/aa3Z0ZjIddV+idXN2qH2uosdCz39zSdHXJCP5cpknTZ3cskVQZW2QJqnufc5YBIoH5g8MCrJExDR+C+MNBY5nHRQ52BAL1BWsnPd1QhE9hVK1vRml1laQ9l1udxS5guyge4QZvPg+A="
-  local_dir: site
-env:
-  global:
-    secure: tMG8zwI9DTCzgzzUbcY72MfHMJz6rrZngJtJRZvruW37/N8fh7mGgaJIKgXeROxFGiUTCaOdiZ+4SSRyTVzxuuPB2N2aF3WcyR8M90BmroBCA5WsvFnzNnvfF84kRuaRSAzr0W2d89gEkYG52zx/QRRE/W8+7xoypyTX9OS2gPnUGJi6PBWIl9FXMjhF39taSt2ZoaNQnINTe8Lf1tmrOoi5tVIUYj3ZzFJq+CLozI1jttGlLs+VaP61hKr7VF6bkcRx1udlLThXG58hZqaaLOmZ66klvd2Vckkox2uG9LiONVrnTMOhVZn1aYD5qJkAf4VhPDEWkU4sgaFNP90sZEciFTg3YQzRYoyFPk3TvAfxrLmBgEKZSmmMNaaaOuih7kNCT8/7vermm4m9oWgPRu9u7JHhYobbhrKmCFHxwBrHc7jJQjsy+EqTkWS6dg6Phy3NJlVOprmwb7NKP6l2wszbRmOhuaEgrqLlPYQrNd2rUJ+hkXGNFuzBshbmDZMYiwU3J8ecDDLED4zhqK5fOiFExXljFNCb/aa3Z0ZjIddV+idXN2qH2uosdCz39zSdHXJCP5cpknTZ3cskVQZW2QJqnufc5YBIoH5g8MCrJExDR+C+MNBY5nHRQ52BAL1BWsnPd1QhE9hVK1vRml1laQ9l1udxS5guyge4QZvPg+A=
+  - mkdocs build --verbose --clean --strict
+after_success:
+  - "firebase deploy --token=${FIREBASE_API_TOKEN}"
+site_dir: 'public'
